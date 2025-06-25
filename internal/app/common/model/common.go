@@ -12,7 +12,7 @@ type PageReq struct {
 	DateRange []string `p:"dateRange"` //日期范围
 	PageNum   int      `p:"pageNum"`   //当前页码
 	PageSize  int      `p:"pageSize"`  //每页数
-	OrderBy   string   //排序方式
+	OrderBy   string   `p:"orderBy" v:"regex:^[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)?\\s+(asc|desc|ASC|DESC)(?:\\s*,\\s*[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)?\\s+(asc|desc|ASC|DESC))*$#排序参数不合法"` // 排序方式
 }
 
 // ListRes 列表公共返回
