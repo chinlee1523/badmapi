@@ -1,0 +1,22 @@
+CREATE TABLE `member_mate_requirement` (
+  `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `member_id` BIGINT UNSIGNED NOT NULL COMMENT '会员ID',
+  `age_min` INT DEFAULT NULL COMMENT '期望年龄最小值',
+  `age_max` INT DEFAULT NULL COMMENT '期望年龄最大值',
+  `height_min` INT DEFAULT NULL COMMENT '期望身高最小值(cm)',
+  `height_max` INT DEFAULT NULL COMMENT '期望身高最大值(cm)',
+  `education` VARCHAR(50) DEFAULT NULL COMMENT '期望学历',
+  `marital_status` TINYINT DEFAULT NULL COMMENT '期望婚姻状况(0未婚 1离异 2丧偶 3已婚)',
+  `has_children` TINYINT DEFAULT NULL COMMENT '期望有无子女(0无 1有)',
+  `income_min` VARCHAR(50) DEFAULT NULL COMMENT '期望最低收入',
+  `income_max` VARCHAR(50) DEFAULT NULL COMMENT '期望最高收入',
+  `province` VARCHAR(50) DEFAULT NULL COMMENT '期望省份',
+  `city` VARCHAR(50) DEFAULT NULL COMMENT '期望城市',
+  `hobbies` VARCHAR(255) DEFAULT NULL COMMENT '期望兴趣爱好，逗号分隔',
+  `other` TEXT DEFAULT NULL COMMENT '其他补充说明',
+  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_member_id` (`member_id`),
+  CONSTRAINT `fk_member_mate_requirement_member` FOREIGN KEY (`member_id`) REFERENCES `member`(`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='会员择偶要求表'; 
