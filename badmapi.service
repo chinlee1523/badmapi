@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=ubuntu
 WorkingDirectory=/home/ubuntu/liulianshidai/badmapi
-ExecStart=/home/ubuntu/liulianshidai/badmapi/bin/linux_amd64/main
+ExecStart=/home/ubuntu/liulianshidai/badmapi/badmapi
 Restart=on-failure
 RestartSec=3
 
